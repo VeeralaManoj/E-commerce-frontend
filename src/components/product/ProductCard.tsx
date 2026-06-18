@@ -2,16 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { Product } from "@/types";
 import { formatCurrency } from "@/lib/utils";
 import { useCartStore } from "@/stores/cartStore";
-import { useWishlistStore } from "@/stores/wishlistStore";
+import { FavoriteButton } from "@/components/product/FavoriteButton";
 
 export function ProductCard({ product }: { product: Product }) {
   const addItem = useCartStore((state) => state.addItem);
-  const wishlist = useWishlistStore();
-  const wished = wishlist.has(product.id);
 
   return (
     <article className="group rounded-lg border border-black/10 bg-white p-3 shadow-sm">
@@ -24,9 +22,7 @@ export function ProductCard({ product }: { product: Product }) {
             <Link href={`/products/${product.slug}`} className="font-semibold hover:text-brand-600">{product.name}</Link>
             <p className="text-sm text-black/55">{product.category.name}</p>
           </div>
-          <button aria-label="Toggle wishlist" onClick={() => wishlist.toggle(product.id)} className="rounded-full p-2 hover:bg-black/5">
-            <Heart size={18} className={wished ? "fill-coral text-coral" : ""} />
-          </button>
+          <FavoriteButton productId={product.id} />
         </div>
         <div className="flex items-center justify-between">
           <p className="font-bold">{formatCurrency(product.price)}</p>

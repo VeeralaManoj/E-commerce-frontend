@@ -19,3 +19,6 @@ export const useWishlistStore = create<WishlistState>()(
     { name: "ecommerce-wishlist" }
   )
 );
+
+export const selectWishlistIds = (state: WishlistState) => state.ids;
+export const selectToggleWishlist = (state: WishlistState) => state.toggle;
