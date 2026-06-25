@@ -35,8 +35,8 @@ export const reviews: Review[] = [
 ];
 
 export const users: User[] = [
-  { id: "u1", name: "Admin User", email: "admin@example.com", role: "admin", createdAt: "2026-01-10" },
-  { id: "u2", name: "Customer User", email: "customer@example.com", role: "customer", createdAt: "2026-02-14" }
+  { id: "u1", name: "Admin User", email: "admin@example.com", role: "ADMIN", createdAt: "2026-01-10" },
+  { id: "u2", name: "Customer User", email: "customer@example.com", role: "CUSTOMER", createdAt: "2026-02-14" }
 ];
 
 export const orders: Order[] = [
