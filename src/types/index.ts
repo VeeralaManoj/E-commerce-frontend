@@ -1,4 +1,4 @@
-export type Role = "customer" | "admin";
+export type Role = "CUSTOMER" | "SELLER" | "ADMIN";
 
 export type User = {
   id: string;
@@ -6,6 +6,18 @@ export type User = {
   email: string;
   role: Role;
   createdAt?: string;
+};
+
+export type AuthTokens = {
+  accessToken: string;
+  refreshToken?: string;
+};
+
+export type AuthResponse = {
+  user: User;
+  accessToken?: string;
+  refreshToken?: string;
+  token?: string;
 };
 
 export type Category = {

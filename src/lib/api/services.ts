@@ -1,6 +1,7 @@
 import { api } from "@/lib/api/client";
 import { categories, orders, products, reviews, users } from "@/data/mock";
 import { OrderStatus, Paginated, Product, ProductQuery, ShippingAddress, User } from "@/types";
+export { authService } from "@/services/authService";
 
 async function fallback<T>(request: Promise<{ data: T }>, data: T) {
   try {
@@ -36,14 +37,6 @@ export const categoryService = {
   create: (payload: unknown) => api.post("/admin/categories", payload),
   update: (id: string, payload: unknown) => api.put(`/admin/categories/${id}`, payload),
   remove: (id: string) => api.delete(`/admin/categories/${id}`)
-};
-
-export const authService = {
-  login: (email: string, password: string) => api.post<{ user: User; token: string }>("/auth/login", { email, password }),
-  register: (payload: unknown) => api.post<{ user: User; token: string }>("/auth/register", payload),
-  forgotPassword: (email: string) => api.post("/auth/forgot-password", { email }),
-  resetPassword: (token: string, password: string) => api.post("/auth/reset-password", { token, password }),
-  me: () => api.get<User>("/auth/me")
 };
 
 export const cartService = {
